@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CommonServiceImpl<E, Repository extends CrudRepository<E, Long>> implements CommonService<E> {
 	
 	@Autowired
-	private Repository repository;
+	protected Repository repository;
 
 	@Override
 	@Transactional(readOnly = true)
