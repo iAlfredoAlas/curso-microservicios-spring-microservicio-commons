@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -28,6 +29,11 @@ public class CommonController<E, S extends CommonService<E>> {
 		return ResponseEntity.ok().body(service.findall());
 	}
 
+	@GetMapping("/pag")
+	public ResponseEntity<?> listar(Pageable pageable) {
+		return ResponseEntity.ok().body(service.findall(pageable));
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> ver(@PathVariable Long id) {
 		Optional<E> optAlumno = service.findbyId(id);
