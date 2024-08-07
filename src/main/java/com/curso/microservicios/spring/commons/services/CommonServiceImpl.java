@@ -3,10 +3,10 @@ package com.curso.microservicios.spring.commons.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-public class CommonServiceImpl<E, Repository extends CrudRepository<E, Long>> implements CommonService<E> {
+public class CommonServiceImpl<E, Repository extends PagingAndSortingRepository<E, Long>> implements CommonService<E> {
 	
 	@Autowired
 	protected Repository repository;
