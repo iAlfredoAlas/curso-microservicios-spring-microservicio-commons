@@ -3,6 +3,8 @@ package com.curso.microservicios.spring.commons.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +35,12 @@ public class CommonServiceImpl<E, Repository extends PagingAndSortingRepository<
 	@Transactional
 	public void deleteById(Long id) {
 		repository.deleteById(id);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Page<E> findall(Pageable pageable) {
+		return repository.findAll(pageable);
 	}
 
 }
